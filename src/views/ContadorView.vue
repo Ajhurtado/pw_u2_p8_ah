@@ -1,14 +1,14 @@
 <template>
-<HolaMundo/>
+<div>
+  <Contador/>
+</div>
 </template>
 
-
 <script>
-import HolaMundo from "../components/HolaMundo.vue";
-
+import Contador from "@/components/Contador.vue";
 export default {
     components: {
-        HolaMundo,
+        Contador,
     },
 }
 </script>
