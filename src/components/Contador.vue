@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Contador</h1>
+    <h1>{{ title }}</h1>
     <p>10</p>
     <p>{{ numero }}</p>
     <p>{{ this.numero }} <sup>2</sup>= {{ calCuadrado }}</p>
@@ -24,17 +24,43 @@
 
     <div>
       <button v-on:click="incrementar">+1</button>
-      <button v-on:click="decrementar">-1</button>
+      <button @click="decrementar">-1</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+
+  //  props:['title', 'value'] ,
+  // forma diferente de definir las propiedades
+  /*props:{
+    title:String, 
+    value:Number,
+    p1:Boolean,
+    p2:Array,
+    p3:Object,
+    p4:Function,
+    p5:Date,
+    p6:Symbol,
+  },*/
+//FORMA MAS LEGIBLE DE DEFINIR PROPIEDADES
+  props:{
+    title:String, 
+    value: {
+      type:Number,
+      required:false,
+      default:100,
+      validator(value){
+        return value > 0;
+      }
+    }
+  },
+
   data() {
     return {
-      numero: 5,
-      texto: "Alexis Hurtado",
+      numero: this.value,
+      titulo: "Contador",
       activo: true,
       usuario: {
         nombre: "Alexis",
@@ -56,6 +82,7 @@ export default {
       this.numero--;
     },
   },
+
   computed: {
     // Propiedades computadas, solo se ejectua si se cambio algo de aqui del cuerpo
     calCuadrado() {
@@ -63,6 +90,15 @@ export default {
       return this.numero * this.numero;
     },
   },
+
+  created() {
+    if(this.value>0){
+      console.log('Es correcto');
+    }else{
+      throw new Error('El valor no puede ser menor a 0');
+    }
+  },
+
 };
 </script>
 
