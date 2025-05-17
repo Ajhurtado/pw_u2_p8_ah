@@ -14,7 +14,8 @@ export default {
 }
 </script>
 
-<style>
+
+<style scoped>
 .titulo {
     color: red;
     
