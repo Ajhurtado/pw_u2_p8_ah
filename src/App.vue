@@ -2,7 +2,8 @@
   <!-- <HolaMundoView/> -->
   <!-- <ContadorView/> -->
   <!--<EstudianteView/>-->
-  <EstudianteTablaView/> 
+  <!--<EstudianteTablaView/>-->
+  <VideojuegoView/> 
 </template>
  
 <script>
@@ -10,6 +11,7 @@ import HolaMundoView from "../src/views/HolaMundoView.vue";
 import ContadorView from "../src/views/ContadorView.vue";
 import EstudianteView from "../src/views/EstudianteView.vue";
 import EstudianteTablaView from "../src/views/EstudianteTablaView.vue";
+import VideojuegoView from "../src/views/VideojuegoView.vue";
 
 export default {
   name: 'App',
@@ -18,6 +20,7 @@ export default {
     ContadorView,
     EstudianteView,
     EstudianteTablaView,
+    VideojuegoView,
   },
 };
 </script>
