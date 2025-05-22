@@ -18,7 +18,6 @@
     <label for="id_estado">Estado:</label>
     <input v-model="nuevoEstado" id="id_estado" type="text" >
 
-
     <button v-on:click="agregarEstudiante()" >Agregar</button>
     <!--{{ nuevoNombre }}-->
     <!--Reemplazar por una tabla-->
