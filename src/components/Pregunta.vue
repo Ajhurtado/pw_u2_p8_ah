@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img src="https://yesno.wtf/assets/no/19-2062f4c91189b1f88a9e809c10a5b0f0.gif" alt="No se pudo cargar">
+    <img v-if="imagen" :src="imagen" alt="No se pudo cargar">
     
     <div class="container-2">    
     </div>
@@ -8,25 +8,56 @@
     <div class="pregunta-container">
         <input v-model="pregunta" type="text" placeholder="Hazme una pregunta">
         <p>Recuerda terminar con un signo de pregunta (?)</p>    
-        <h2>{{pregunta}}</h2>
-        <h1>{{respuesta}}</h1>
+        
+        <div v-if="esValido">
+            <h2>{{pregunta}}</h2>
+            <!--esto ya no se mostrara-->
+            <h1>{{respuesta}}</h1>
+        </div>
     </div>
     
   </div>
 </template>
 
 <script>
+
+import {consultarRespuestaFachada} from "@/clients/YesNoClient.js"
+
 export default {
     data(){
         return{
+            //propiedades reactivas
             pregunta:null,
             respuesta:null,
+            imagen: null,
+
+            //un ejemplo si solo quisiera que la pregunta se ponga cuando se complete con ?
+            esValido: false,
         };
     },
     watch:{
         pregunta(value, oldValue){
+                this.esValido=false
+            if(value.includes("?")){
+                this.esValido=true,
             console.log("Valor actual: " + value);
-            console.log("Valor anterior: " + oldValue);
+            console.log("Valor anterior: " + oldValue);   
+            //aqui deberia consultar el api   
+            this.consumirAPI();         
+            }
+        },
+    },
+    
+    methods:{
+        async consumirAPI(){
+                this.respuesta="pensando.........";
+            const resp = await consultarRespuestaFachada();
+            console.log(resp);
+            console.log(resp.image);
+            console.log(resp.answer);
+            console.log(resp.forced);
+            this.respuesta = resp.answer;     
+            this.imagen = resp.image;       
         }
     }
 
