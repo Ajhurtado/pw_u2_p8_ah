@@ -2,8 +2,7 @@
   <div class="container">
     <img v-if="imagen" :src="imagen" alt="No se pudo cargar">
     
-    <div class="container-2">    
-    </div>
+    <div class="container-2"></div>
 
     <div class="pregunta-container">
         <input v-model="pregunta" type="text" placeholder="Hazme una pregunta">
