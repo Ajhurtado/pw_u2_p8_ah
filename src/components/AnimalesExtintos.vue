@@ -5,17 +5,21 @@
 
     <div class="container_animal">
       <h1>Quieres buscar algun animal extinto?</h1>
-      <button v-on:click="buscarAnimal()">Si</button>
-      <div class="container_nombre">
+      <input v-model="respuesta" type="text" placeholder="Responde con un SI, Si o si">
+      <div class="container_nombre" v-if="esValido">
         <table border="2" >
-            <tr>
-            <th>Nombre:</th>
-            <th>{{ nombre }}</th>
+          <thead>  
+          <tr>
+              <th>Nombre:</th>
+              <td>{{ nombre }}</td>
             </tr>
+          </thead>
+          <tbody>  
             <tr>
-            <th>Último Registro:</th>
-            <th>{{ registro }}</th>
+              <th>Último Registro:</th>
+              <td>{{ registro }}</td>
             </tr>
+          </tbody>  
         </table>
       </div>
     </div>
@@ -32,8 +36,23 @@ export default {
       nombre: null,
       imagen: null,
       registro: null,
+      respuesta: null,
+      esValido: false,
     };
   },
+  watch:{
+        respuesta(value, oldValue){
+                this.esValido=false
+            if(value.includes("Si") || value.includes("si") || value.includes("SI")){
+            //si la respuesta es si, entonces es valido
+                this.esValido=true,
+            console.log("Valor actual: " + value);
+            console.log("Valor anterior: " + oldValue);   
+            //aqui deberia consultar el api   
+            this.buscarAnimal();         
+            }
+        },
+    },
   
   methods: {
   async buscarAnimal() {
@@ -113,9 +132,17 @@ th {
     padding: 10px;
 }
 
+input {
+    width: 250px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 40px;
+}
+
 h1 {
     color: rgb(0, 0, 0);
-    font-size: 40px;
+    font-size: 60px;
     text-align: center;
 }
 

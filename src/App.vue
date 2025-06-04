@@ -5,7 +5,8 @@
   <!--<EstudianteTablaView/>-->
   <!--<VideojuegoView/>-->
   <!--<PreguntaView/>-->
-  <AnimalesExtintosView/>
+  <!--<AnimalesExtintosView/>-->
+  <PokemonView/>
 
 </template>
  
@@ -17,6 +18,7 @@ import EstudianteTablaView from "../src/views/EstudianteTablaView.vue";
 import VideojuegoView from "../src/views/VideojuegoView.vue";
 import PreguntaView from "@/views/PreguntaView.vue"
 import AnimalesExtintosView from "@/views/AnimalesExtintosView.vue";
+import PokemonView from "@/views/PokemonView.vue";
 
 export default {
   name: 'App',
@@ -27,7 +29,8 @@ export default {
     EstudianteTablaView,
     VideojuegoView,
     PreguntaView,
-    AnimalesExtintosView
+    AnimalesExtintosView,
+    PokemonView
   },
 };
 </script>
