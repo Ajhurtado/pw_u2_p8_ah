@@ -50,9 +50,9 @@ data(){
 
 <style>
 img {
-    margin-top: 150px;
+    
     height: 200px;
-    position: absolute;
+    position: relative;
     /*ubiquese a desde la derecha*/
     right: 50%;
 }
