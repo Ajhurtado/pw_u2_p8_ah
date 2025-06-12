@@ -1,20 +1,23 @@
 <template>
+        {{mensaje1}}
     <div class="image-container">
-        <img v-if="!mostrar"
+        <img v-if="!mostrarImagen"
         class="ocultar" 
         :src="imagenFuente" 
         alt="No se puede renderizar pokemon"
         />
 
-        <img v-if="mostrar"
+        <img v-if="mostrarImagen"
         :src="imagenFuente" 
         alt="No se puede renderizar pokemon"
         />
+
     </div>
 </template>
 
 <script>
 export default {
+    //este tambien es un HIJO
     //Este componente recibe un props y haga lo computado
     //Otro dato este es el hijo y esto lo mandaremos al Componente Padre PokemonView.vue
     props: {
@@ -27,14 +30,16 @@ export default {
             type: Boolean,
             required: true, 
             default: false, // Valor por defecto si no se proporciona
-        }
+        },
+        
     },
 data(){
         return {
             //propiedad reactiva para mostrar la imagen
            // mostrar: false,
             //Aqui ya cambiamos con el nuevo props
-            mostrar: this.mostrarImagen,
+            //Ya que estabamos usando doble vez el mostrar, lo eliminamos para no tener inconveniente
+        mensaje1:"mensaje1"
         };          
     },
     computed: {
